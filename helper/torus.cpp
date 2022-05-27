@@ -10,7 +10,7 @@ Torus::Torus(GLfloat outerRadius, GLfloat innerRadius, GLuint nsides, GLuint nri
     GLuint faces = nsides * nrings;
     int nVerts  = nsides * (nrings+1);   // One extra ring to duplicate first ring
 
-    // Points
+    // Pointss
     std::vector<GLfloat> p(3 * nVerts);
     // Normals
     std::vector<GLfloat> n(3 * nVerts);
