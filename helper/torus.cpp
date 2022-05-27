@@ -3,6 +3,7 @@
 #include <cstdio>
 #include <cmath>
 #include <glm/gtc/constants.hpp>
+//torus
 
 Torus::Torus(GLfloat outerRadius, GLfloat innerRadius, GLuint nsides, GLuint nrings)
 {
