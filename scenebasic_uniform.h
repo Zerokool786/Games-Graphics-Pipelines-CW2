@@ -1,3 +1,4 @@
+#pragma once
 
 #include "helper/glslprogram.h":
 #include <glm/glm.hpp>
@@ -12,8 +13,6 @@
 #include "helper/glslprogram.h"
 #include "helper/torus.h"
 
-
-
 class SceneBasic_Uniform : public Scene
 {
 //private:
@@ -27,6 +26,10 @@ private:
     void setMatrices();
 
     void compile();
+
+    glm::vec3 cameraPos;
+    float angle = 0.0f;
+    float lastFrameTime = 0.0f;
 
 public:
     SceneBasic_Uniform();
