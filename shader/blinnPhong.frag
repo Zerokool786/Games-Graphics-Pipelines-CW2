@@ -46,7 +46,7 @@ void main()
 
 vec3 blinnPhong(vec3 ambient, vec3 position, vec3 L, vec3 texColor )
 {
-	vec3 s = normalize(position - WorldPosition); //calculate s vector
+	vec3 s = normalize(position - WorldPosition); //calculate s vector "light's direction"
 	vec3 normal = normalize(Normal);
 	float sDotN = max(dot(s, normal), 0.0); //calculate dot product between s and n
 

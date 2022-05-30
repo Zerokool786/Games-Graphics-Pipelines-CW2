@@ -50,7 +50,7 @@ void SceneBasic_Uniform::initScene()
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
     prog.setUniform("Material.Shininess", 180.0f);
 
-    // Pass the shader Diffuse and specular light intensity
+    // Pass the shader light's position
     prog.setUniform("Lights[0].Position", glm::vec4(5.0f, 0.0f, 0.0f, 1.0f));
     prog.setUniform("Lights[1].Position", glm::vec4(0.0f, 0.0f, 5.0f, 1.0f));
     prog.setUniform("Lights[2].Position", glm::vec4(2.0f, 0.0f, 2.0f, 1.0f));
@@ -61,9 +61,9 @@ void SceneBasic_Uniform::initScene()
     prog.setUniform("Lights[2].L", vec3(0.8f, 0.0f, 0.0f));
 
     // Pass the shader ambient intensity
-    prog.setUniform("Lights[0].La", vec3(0.0f, 0.0f, 0.8f));
-    prog.setUniform("Lights[1].La", vec3(0.0f, 0.8f, 0.0f));
-    prog.setUniform("Lights[2].La", vec3(0.8f, 0.0f, 0.0f));
+    prog.setUniform("Lights[0].La", vec3(0.0f, 0.0f, 0.0f));
+    prog.setUniform("Lights[1].La", vec3(0.0f, 0.0f, 0.0f));
+    prog.setUniform("Lights[2].La", vec3(0.0f, 0.0f, 0.0f));
 
 }
 
@@ -72,6 +72,8 @@ void SceneBasic_Uniform::compile()
     try {
         prog.compileShader("shader/blinnPhong.vert");
         prog.compileShader("shader/blinnPhong.frag");
+        //prog.compileShader("shader/basic_uniform1.vert");
+        //prog.compileShader("shader/basic_uniform1.frag");
         prog.link();
         prog.use();
     }
@@ -83,13 +85,20 @@ void SceneBasic_Uniform::compile()
 
 void SceneBasic_Uniform::update(float t)
 {
+    // Get the time between current time and the last frame time.
     float deltaTime = std::min(t - lastFrameTime, 0.1f);
     lastFrameTime = t;
 
-    // Update camera position
+    // Increment the angle by 40 degrees
     angle += glm::radians(40.0f) * deltaTime; 
+
+    // Convert the angle to a position in the orbit
     cameraPos = glm::vec3(glm::cos(angle) * 5.0f, 0.0f, glm::sin(angle) * 5.0f);
+
+    // Notify the shader the new camera position
     prog.setUniform("cameraPos", cameraPos);
+    
+    //Update the view matrix to reflect the new camera position
     view = glm::lookAt(cameraPos, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
 }
 
