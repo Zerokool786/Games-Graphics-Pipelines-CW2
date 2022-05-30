@@ -17,7 +17,7 @@ using std::endl;
 using glm::vec3;
 using glm::mat4;
 
-SceneBasic_Uniform::SceneBasic_Uniform() : torus(0.7f, 0.3f, 100, 100) {} // construct torus with high polymesh more rings and sides
+SceneBasic_Uniform::SceneBasic_Uniform() : torus(0.7f, 0.3f, 150, 150) {} // construct torus with high polymesh more rings and sides
     
 void SceneBasic_Uniform::initScene()
 {
@@ -29,6 +29,12 @@ void SceneBasic_Uniform::initScene()
 
     // Load texture
     texID = Texture::loadTexture("texture/me_textile.png");
+    /*texID = Texture::loadTexture("texture/moss.png");*/
+    /*texID = Texture::loadTexture("texture/flower.png");*/
+    /*texID = Texture::loadTexture("texture/ogre_diffuse.png");*/
+    /*texID = Texture::loadTexture("texture/fire.png");*/
+    /*texID = Texture::loadTexture("texture/bluewater.png");*/
+
 
     glActiveTexture(GL_TEXTURE0); // Activate texture slot 0
     glBindTexture(GL_TEXTURE_2D, texID);
@@ -81,7 +87,7 @@ void SceneBasic_Uniform::update(float t)
     lastFrameTime = t;
 
     // Update camera position
-    angle += glm::radians(30.0f) * deltaTime; 
+    angle += glm::radians(40.0f) * deltaTime; 
     cameraPos = glm::vec3(glm::cos(angle) * 5.0f, 0.0f, glm::sin(angle) * 5.0f);
     prog.setUniform("cameraPos", cameraPos);
     view = glm::lookAt(cameraPos, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));
@@ -116,6 +122,6 @@ void SceneBasic_Uniform::resize(int w, int h)
     width = w;
     height = h;
     glViewport(0, 0, w, h);
-    projection = glm::perspective(glm::radians(70.0f), (float)w / h, 0.3f, 100.0f);
+    projection = glm::perspective(glm::radians(30.0f), (float)w / h, 0.3f, 100.0f);
         
 }
