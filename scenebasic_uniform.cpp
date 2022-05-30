@@ -27,6 +27,13 @@ void SceneBasic_Uniform::initScene()
     /*Initialise the model matrix using:*/
     model = mat4(1.0f);
 
+    // Load texture
+    texID = Texture::loadTexture("texture/me_textile.png");
+
+    glActiveTexture(GL_TEXTURE0); // Activate texture slot 0
+    glBindTexture(GL_TEXTURE_2D, texID);
+    prog.setUniform("Tex1", 0);
+
     //model = glm::rotate(model, glm::radians(-35.0f), vec3(1.0f, 0.0f, 0.0f));  //rotate model around z-axis
     //model = glm::rotate(model, glm::radians(10.0f), vec3(0.0f, 1.0f, 0.0f));   //rotate model around y-axis
     view = glm::lookAt(cameraPos, vec3(0.0f, 0.0f, 0.0f), vec3(0.0f, 1.0f, 0.0f));

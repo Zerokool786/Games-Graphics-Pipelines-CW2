@@ -13,6 +13,8 @@
 #include "helper/glslprogram.h"
 #include "helper/torus.h"
 
+#include "texture.h"
+
 class SceneBasic_Uniform : public Scene
 {
 //private:
@@ -30,6 +32,7 @@ private:
     glm::vec3 cameraPos;
     float angle = 0.0f;
     float lastFrameTime = 0.0f;
+    GLint texID = -1;
 
 public:
     SceneBasic_Uniform();

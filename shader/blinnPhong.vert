@@ -5,12 +5,12 @@
 
  layout (location = 0) in vec3 VertexPosition;
  layout (location = 1) in vec3 VertexNormal;
- //layout (location = 2) in vec2 TextureCoords;
+ layout (location = 2) in vec2 VertexTexCoord;
 
 //output vars
  out vec3 WorldPosition;
  out vec3 Normal;
- //out vec2 texCoords;
+ out vec2 texCoords;
 
 //uniforms for matrices required in shader
 uniform mat4 ModelViewMatrix;      //model view matrix
@@ -21,7 +21,7 @@ void main()
 {
     Normal = normalize( NormalMatrix * VertexNormal);
     WorldPosition = ( ModelViewMatrix * vec4(VertexPosition,1.0) ).xyz;
-
+    texCoords = VertexTexCoord;
 	gl_Position = MVP * vec4(VertexPosition,1.0);
 }
 
