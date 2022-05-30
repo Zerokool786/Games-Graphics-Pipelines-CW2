@@ -48,7 +48,7 @@ void SceneBasic_Uniform::initScene()
     prog.setUniform("Material.Kd", 0.0f, 0.1f, 0.5f);
     prog.setUniform("Material.Ks", 0.9f, 0.9f, 0.9f);
     prog.setUniform("Material.Ka", 0.5f, 0.5f, 0.5f);
-    prog.setUniform("Material.Shininess", 180.0f);
+    prog.setUniform("Material.Shininess", 200.0f);
 
     // Pass the shader light's position
     prog.setUniform("Lights[0].Position", glm::vec4(5.0f, 0.0f, 0.0f, 1.0f));
