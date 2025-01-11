@@ -35,9 +35,6 @@
  - the scenebasic render function renders the torus object every frame
  
  
- 
- # Anything else which will help us to understand how your prototype works?
-  I utilized the given project template to build my prototype 
  # Link to Youtube Video
  
  https://youtu.be/sixV31u05Jo 
